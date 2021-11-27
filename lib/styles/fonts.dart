@@ -21,6 +21,11 @@ class HeaderFonts {
     fontWeight: FontWeight.bold,
     color: TextColors.secondary
   );
+   static final secondaryHeader = AppFont.getAppFont(
+    fontSize: 18,
+    fontWeight: FontWeight.w700,
+    color: TextColors.primary
+  );
 }
 
 
@@ -29,5 +34,10 @@ class TextFonts {
     fontSize: 16,
     fontWeight: FontWeight.w600,
     color: TextColors.primary
+  );
+   static final secondaryText = AppFont.getAppFont(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    color: TextColors.secondary
   );
 }
