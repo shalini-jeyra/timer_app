@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:timer_app/pages/create_activity_page/create_activity_page.dart';
 import 'package:timer_app/pages/home_page/home_page_components/home_page_components.dart';
 import 'package:timer_app/styles/styles.dart';
 
@@ -16,11 +17,20 @@ class HomePage extends StatelessWidget {
         ),
       ),
       body: const SafeArea(
-        child: NoActivityWidget(key: Key('no_activity_widget'),),
+        child: NoActivityWidget(
+          key: Key('no_activity_widget'),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.ternary,
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (BuildContext context) => const CreateActivityPage(),
+            ),
+          );
+        },
         child: const Icon(Icons.add),
       ),
     );

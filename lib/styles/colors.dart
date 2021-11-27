@@ -37,3 +37,7 @@ class TextColors {
     255,
   );
 }
+class BoxColor{
+  static const Color primary =  Color.fromARGB(62,139, 221, 146, );
+    
+}
