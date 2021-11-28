@@ -44,11 +44,11 @@ class _ActivityTimerState extends State<ActivityTimer>
         leading: IconButton(
           icon: const Icon(Icons.arrow_back,color: AppColors.secondary,),
           onPressed: () {
-            Navigator.push(
+            Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(
                 builder: (BuildContext context) => const HomePage(),
-              ),
+              ),(route) => false
             );
             FlutterRingtonePlayer.stop();
           },

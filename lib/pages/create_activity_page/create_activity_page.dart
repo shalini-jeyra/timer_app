@@ -61,7 +61,7 @@ class _CreateActivityPageState extends State<CreateActivityPage> {
                       descriptionController.text,
                       _dateTime,
                     );
-                    Navigator.push(
+                    Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
                         builder: (BuildContext context) => ActivityTimer(
@@ -69,7 +69,7 @@ class _CreateActivityPageState extends State<CreateActivityPage> {
                           description: descriptionController.text,
                           activityTime: _dateTime,
                         ),
-                      ),
+                      ),(route) => false
                     );
                   }
                  

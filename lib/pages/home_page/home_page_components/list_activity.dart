@@ -4,6 +4,7 @@ import 'package:timer_app/pages/activity_timer/activity_timer.dart';
 import 'package:timer_app/pages/home_page/home_page_components/home_page_components.dart';
 import 'package:timer_app/services/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:timer_app/styles/styles.dart';
 
 class ListActivity extends StatelessWidget {
   const ListActivity({Key? key}) : super(key: key);
@@ -16,35 +17,38 @@ class ListActivity extends StatelessWidget {
           if (box.isNotEmpty) {
             List<Activity> activities =
                 List<Activity>.from(box.values).toList();
-            return ListView.separated(
-                shrinkWrap: true,
-                itemCount: activities.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Card(
-                    child: ListTile(
-                      title: Text(activities[index].title),
-                      trailing: const Icon(
-                        Icons.arrow_forward_ios_outlined,
+            return Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: ListView.separated(
+                  shrinkWrap: true,
+                  itemCount: activities.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Card(
+                      child: ListTile(
+                        title: Text(activities[index].title,style: TextFonts.primaryText,),
+                        trailing: const Icon(
+                          Icons.arrow_forward_ios_outlined,
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => ActivityTimer(
+                                  title: activities[index].title,
+                                  description: activities[index].description,
+                                  activityTime: activities[index].activityTime),
+                            ),
+                          );
+                        },
                       ),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (BuildContext context) => ActivityTimer(
-                                title: activities[index].title,
-                                description: activities[index].description,
-                                activityTime: activities[index].activityTime),
-                          ),
-                        );
-                      },
-                    ),
-                  );
-                },
-                separatorBuilder: (BuildContext context, int index) {
-                  return const SizedBox(
-                    height: 10,
-                  );
-                });
+                    );
+                  },
+                  separatorBuilder: (BuildContext context, int index) {
+                    return const SizedBox(
+                      height: 10,
+                    );
+                  }),
+            );
           }
           return const NoActivityWidget();
         });
