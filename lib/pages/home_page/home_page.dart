@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:timer_app/pages/create_activity_page/create_activity_page.dart';
 import 'package:timer_app/pages/home_page/home_page_components/home_page_components.dart';
+
 import 'package:timer_app/styles/styles.dart';
 
 class HomePage extends StatelessWidget {
@@ -8,6 +9,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.ternary,
@@ -17,9 +19,7 @@ class HomePage extends StatelessWidget {
         ),
       ),
       body: const SafeArea(
-        child: NoActivityWidget(
-          key: Key('no_activity_widget'),
-        ),
+        child: ListActivity()
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.ternary,
