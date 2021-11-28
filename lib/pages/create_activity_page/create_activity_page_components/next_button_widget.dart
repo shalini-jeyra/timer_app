@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:timer_app/styles/styles.dart';
 
-class ButtonWidget extends StatelessWidget {
-  const ButtonWidget({Key? key, required this.onPressed}) : super(key: key);
+class NextButtonWidget extends StatelessWidget {
+  const NextButtonWidget({Key? key, required this.onPressed}) : super(key: key);
   final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {

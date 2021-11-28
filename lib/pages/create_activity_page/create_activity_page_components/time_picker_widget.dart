@@ -15,6 +15,7 @@ class TimePickerWidget extends StatelessWidget {
           style: HeaderFonts.secondaryHeader,
         ),
         TimePickerSpinner(
+          time:  DateTime.parse("0000-00-00 00:00:00"),
           isShowSeconds: true,
           onTimeChange: onTimeChange as void Function(DateTime),
         )

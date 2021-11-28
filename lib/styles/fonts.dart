@@ -40,4 +40,9 @@ class TextFonts {
     fontWeight: FontWeight.w600,
     color: TextColors.secondary
   );
+  static final ternaryText = AppFont.getAppFont(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: TextColors.primary
+  );
 }
