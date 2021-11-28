@@ -24,12 +24,7 @@ class TextWidget extends StatelessWidget {
             
             controller: controller,
             onEditingComplete: () => FocusScope.of(context).unfocus(),
-            validator: (input) {
-              if (input!.length < 2) {
-                return 'Please enter a longer password';
-              }
-              return null;
-            },
+            
             decoration: const InputDecoration(
               
               border: OutlineInputBorder(borderSide: BorderSide.none),
