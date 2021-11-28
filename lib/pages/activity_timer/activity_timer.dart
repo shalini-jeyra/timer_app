@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
 import 'package:simple_timer/simple_timer.dart';
 import 'package:timer_app/pages/activity_timer/activity_timer_components/activity_timer_components.dart';
+import 'package:timer_app/pages/home_page/home_page.dart';
 import 'package:timer_app/styles/styles.dart';
 
 class ActivityTimer extends StatefulWidget {
@@ -36,6 +38,22 @@ class _ActivityTimerState extends State<ActivityTimer>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+         backgroundColor: Colors.transparent,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back,color: AppColors.secondary,),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (BuildContext context) => const HomePage(),
+              ),
+            );
+            FlutterRingtonePlayer.stop();
+          },
+        ),
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -123,11 +141,10 @@ class _ActivityTimerState extends State<ActivityTimer>
   void timerValueChangeListener(Duration timeElapsed) {}
 
   void handleTimerOnStart() {
-    print("timer has just started");
-    print("timer----${_timerController.status}");
   }
 
   void handleTimerOnEnd() {
-    print("timer has ended");
+    FlutterRingtonePlayer.playAlarm();
+
   }
 }
