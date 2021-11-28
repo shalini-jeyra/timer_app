@@ -1,24 +1,38 @@
 import 'dart:convert';
 
+import 'package:hive/hive.dart';
+
+part 'activity.g.dart';
+
+@HiveType(typeId: 0)
 class Activity {
+  @HiveField(0)
   String title;
+  @HiveField(1)
   String description;
+  @HiveField(2)
   DateTime activityTime;
+  @HiveField(3)
+  String activityId;
   Activity({
     required this.title,
     required this.description,
     required this.activityTime,
+    required this.activityId,
   });
+
 
   Activity copyWith({
     String? title,
     String? description,
     DateTime? activityTime,
+    String? activityId,
   }) {
     return Activity(
       title: title ?? this.title,
       description: description ?? this.description,
       activityTime: activityTime ?? this.activityTime,
+      activityId: activityId ?? this.activityId,
     );
   }
 
@@ -27,6 +41,7 @@ class Activity {
       'title': title,
       'description': description,
       'activityTime': activityTime.millisecondsSinceEpoch,
+      'activityId': activityId,
     };
   }
 
@@ -35,6 +50,7 @@ class Activity {
       title: map['title'],
       description: map['description'],
       activityTime: DateTime.fromMillisecondsSinceEpoch(map['activityTime']),
+      activityId: map['activityId'],
     );
   }
 
@@ -43,7 +59,9 @@ class Activity {
   factory Activity.fromJson(String source) => Activity.fromMap(json.decode(source));
 
   @override
-  String toString() => 'Activity(title: $title, description: $description, activityTime: $activityTime)';
+  String toString() {
+    return 'Activity(title: $title, description: $description, activityTime: $activityTime, activityId: $activityId)';
+  }
 
   @override
   bool operator ==(Object other) {
@@ -52,9 +70,15 @@ class Activity {
     return other is Activity &&
       other.title == title &&
       other.description == description &&
-      other.activityTime == activityTime;
+      other.activityTime == activityTime &&
+      other.activityId == activityId;
   }
 
   @override
-  int get hashCode => title.hashCode ^ description.hashCode ^ activityTime.hashCode;
+  int get hashCode {
+    return title.hashCode ^
+      description.hashCode ^
+      activityTime.hashCode ^
+      activityId.hashCode;
+  }
 }

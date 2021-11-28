@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:timer_app/pages/pages.dart';
-
-void main() {
+import 'package:timer_app/services/services.dart';
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+ await HiveInstance.initializeHive();
+ setupLocator();
   runApp(const MyApp());
 }
 

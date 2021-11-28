@@ -15,7 +15,7 @@ class NextButtonWidget extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 20),
       ),
       child: Text(
-        'Start ',
+        'Next ',
         style: TextFonts.secondaryText,
       ),
       onPressed: onPressed,
